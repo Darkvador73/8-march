@@ -37,7 +37,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
-            margin: 60px auto 20px auto;
+            margin: 20px auto;
             position: relative;
             animation: float 3s ease-in-out infinite;
         }
@@ -158,23 +158,16 @@
             }
         }
 
-        .header-signature {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            left: 10px;
+        .footer-signature {
+            text-align: center;
             font-size: clamp(0.8rem, 2.5vw, 1rem);
             color: #666;
-            background: var(--tg-theme-secondary-bg-color, rgba(255, 255, 255, 0.9));
+            margin-top: 1.5rem;
             padding: 10px 15px;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 100;
             animation: fadeIn 1s ease;
-            text-align: center;
         }
 
-        .header-signature a {
+        .footer-signature a {
             color: #ff69b4;
             text-decoration: none;
             transition: color 0.3s ease;
@@ -182,12 +175,12 @@
             padding: 2px 5px;
         }
 
-        .header-signature a:active {
+        .footer-signature a:active {
             color: #ff1493;
         }
 
         @media (hover: hover) {
-            .header-signature a:hover {
+            .footer-signature a:hover {
                 color: #ff1493;
                 text-decoration: underline;
             }
@@ -219,9 +212,6 @@
     </style>
 </head>
 <body>
-    <div class="header-signature">
-        С теплом от Андрея, тг канал "<a href="https://t.me/gptbez5" target="_blank">GPT без пяти</a>"
-    </div>
     <div class="flowers" id="flowers"></div>
     <div class="container">
         <h1>С 8 марта! 🌸</h1>
@@ -230,6 +220,9 @@
         <div class="self-care">
             <h2>Порадовать себя в этот день 🎀</h2>
             <ul id="self-care-list"></ul>
+        </div>
+        <div class="footer-signature">
+            С теплом от Андрея, тг канал "<a href="https://t.me/gptbez5" target="_blank">GPT без пяти</a>"
         </div>
     </div>
 
@@ -253,19 +246,7 @@
             "👗 Надеть самое красивое платье",
             "💅 Сделать маникюр в весенних тонах",
             "📚 Почитать любимую книгу с чашечкой чая",
-            "🌺 Купить себе букет любимых цветов",
-            "🎭 Посетить театр или выставку",
-            "👯‍♀️ Встретиться с подругами",
-            "🎨 Заняться творчеством",
-            "🧘‍♀️ Помедитировать в приятной обстановке",
-            "💆‍♀️ Сделать расслабляющий массаж",
-            "🎵 Потанцевать под любимую музыку",
-            "🌿 Погулять в парке или саду",
-            "📱 Позвонить близкой подруге",
-            "🎁 Купить себе давно желанный подарок",
-            "☕️ Позавтракать в уютном кафе",
-            "🌙 Устроить вечер ухода за собой",
-            "🎬 Посмотреть любимый фильм с вкусняшками"
+            "🌺 Купить себе букет любимых цветов"
         ];
 
         function showNewMessage() {
@@ -288,7 +269,7 @@
             setTimeout(() => {
                 listElement.innerHTML = '';
                 const shuffled = [...selfCareIdeas].sort(() => 0.5 - Math.random());
-                const selected = shuffled.slice(0, 8);
+                const selected = shuffled.slice(0, 3);
                 
                 selected.forEach(idea => {
                     const li = document.createElement('li');
