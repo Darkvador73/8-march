@@ -54,6 +54,54 @@
             margin: 1rem 0;
             line-height: 1.6;
             transition: opacity 0.3s ease;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .self-care {
+            margin-top: 2rem;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .self-care h2 {
+            color: #ff69b4;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            margin-bottom: 1rem;
+        }
+
+        .self-care ul {
+            text-align: left;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .self-care li {
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, rgba(255, 182, 193, 0.1), transparent);
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            line-height: 1.4;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            border-left: 4px solid #ff69b4;
+        }
+
+        .self-care li:hover {
+            transform: translateX(10px);
+            border-left: 4px solid #ff1493;
+            background: rgba(255, 182, 193, 0.2);
         }
 
         button {
@@ -76,6 +124,105 @@
 
         button:active {
             transform: scale(0.95);
+        }
+
+        /* Стили для игры и модальных окон */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 90%;
+            width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            color: #ff69b4;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            border-bottom: 1px solid rgba(255, 105, 180, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .stats-item {
+            background: rgba(255, 182, 193, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .flower-rain {
+            animation: flowerRain 3s linear;
+        }
+
+        @keyframes flowerRain {
+            0% { transform: translateY(-100%) rotate(0deg); }
+            100% { transform: translateY(100%) rotate(360deg); }
+        }
+
+        .final-bouquet {
+            font-size: 3rem;
+            margin: 1rem 0;
+            animation: bouquetAppear 1s ease;
+        }
+
+        @keyframes bouquetAppear {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ff69b4;
+            min-width: auto;
+            padding: 5px;
+        }
+
+        .footer-signature {
+            margin-top: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-signature a {
+            color: #ff69b4;
+            text-decoration: none;
+        }
+
+        .footer-signature a:hover {
+            text-decoration: underline;
         }
 
         .game-container {
@@ -120,10 +267,8 @@
             animation: pulse 1s infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        .game-flower.weed {
+            opacity: 0.7;
         }
 
         .combo-text {
@@ -132,89 +277,38 @@
             font-weight: bold;
             pointer-events: none;
             animation: floatUp 1s forwards;
+            z-index: 1;
         }
 
         @keyframes floatUp {
             0% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-50px); opacity: 0; }
         }
-
-        .footer-signature {
-            margin-top: 1.5rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .footer-signature a {
-            color: #ff69b4;
-            text-decoration: none;
-        }
-
-        .footer-signature a:hover {
-            text-decoration: underline;
-        }
-
-        /* Добавляем стили для раздела self-care */
-        .self-care {
-            margin-top: 2rem;
-            padding: 1.2rem;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .self-care h2 {
-            color: #ff69b4;
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .self-care ul {
-            text-align: left;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .self-care li {
-            margin: 8px 0;
-            padding: 12px;
-            border-radius: 12px;
-            background: linear-gradient(90deg, rgba(255, 182, 193, 0.1), transparent);
-            transition: all 0.3s ease;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            line-height: 1.4;
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
-            border-left: 4px solid #ff69b4;
-        }
-
-        .self-care li:active {
-            transform: scale(0.98);
-            background: rgba(255, 182, 193, 0.3);
-        }
-
-        @media (hover: hover) {
-            .self-care li:hover {
-                transform: translateX(10px);
-                border-left: 4px solid #ff1493;
-                background: rgba(255, 182, 193, 0.2);
-                box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
-            }
-        }
     </style>
 </head>
 <body>
+    <div class="modal" id="leaderboardModal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal('leaderboardModal')">×</button>
+            <div class="modal-title">🏆 Таблица рекордов</div>
+            <div id="leaderboard-list"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="statsModal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal('statsModal')">×</button>
+            <div class="modal-title">📊 Статистика игры</div>
+            <div class="stats-grid" id="stats-grid"></div>
+            <div class="final-bouquet" id="final-bouquet"></div>
+        </div>
+    </div>
+
     <div class="container">
         <h1>С 8 марта! 🌸</h1>
         <div class="message" id="message"></div>
         <button onclick="showNewMessage()">Новое пожелание ✨</button>
-        
+
         <div class="self-care">
             <h2>Порадовать себя в этот день 🎀</h2>
             <ul id="self-care-list"></ul>
@@ -228,6 +322,7 @@
             </div>
             <div class="game-area" id="gameArea"></div>
             <button onclick="startGame()">Начать игру</button>
+            <button onclick="showLeaderboard()">Рекорды 🏆</button>
         </div>
 
         <div class="footer-signature">
@@ -242,7 +337,11 @@
             "Ты прекрасна, как первые весенние цветы! 🌷",
             "Пусть сбываются все твои мечты! ✨",
             "Будь всегда такой же очаровательной и неповторимой! 🎀",
-            "Пусть жизнь будет полна приятных сюрпризов! 🎁"
+            "Пусть жизнь будет полна приятных сюрпризов! 🎁",
+            "Ты заслуживаешь всего самого лучшего! 👑",
+            "Пусть каждый день дарит новые поводы для улыбки! 😊",
+            "Будь счастлива и любима каждый день! ❤️",
+            "Пусть весна всегда живёт в твоём сердце! 🌸"
         ];
 
         const selfCareIdeas = [
@@ -257,6 +356,19 @@
             "💆‍♀️ Сделать расслабляющую маску для лица",
             "☕️ Насладиться утренним кофе в кафе"
         ];
+
+        function showNewMessage() {
+            const messageElement = document.getElementById('message');
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            messageElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                messageElement.textContent = messages[randomIndex];
+                messageElement.style.opacity = 1;
+            }, 300);
+
+            updateSelfCareList();
+        }
 
         function updateSelfCareList() {
             const listElement = document.getElementById('self-care-list');
@@ -276,32 +388,40 @@
             }, 300);
         }
 
-        function showNewMessage() {
-            const messageElement = document.getElementById('message');
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            messageElement.style.opacity = 0;
-            
-            setTimeout(() => {
-                messageElement.textContent = messages[randomIndex];
-                messageElement.style.opacity = 1;
-            }, 300);
-
-            updateSelfCareList(); // Обновляем список идей при новом пожелании
-        }
-
+        // Глобальные переменные игры
         let gameActive = false;
         let score = 0;
         let combo = 1;
         let timeLeft = 30;
         let gameInterval;
+        let flowerSpeed = 2000;
+        let gameStats = {
+            flowers: { '🌸': 0, '🌷': 0, '🌹': 0, '🌺': 0, '✨': 0, '🌿': 0 },
+            maxCombo: 1,
+            totalClicks: 0,
+            successfulClicks: 0,
+            specialEvents: 0
+        };
 
+        // Функция показа комбо-текста
+        function showComboText(text, x, y) {
+            const comboText = document.createElement('div');
+            comboText.className = 'combo-text';
+            comboText.textContent = text;
+            comboText.style.left = x + 'px';
+            comboText.style.top = y + 'px';
+            document.getElementById('gameArea').appendChild(comboText);
+            setTimeout(() => comboText.remove(), 1000);
+        }
+
+        // Функция запуска игры
         function startGame() {
             if (gameActive) return;
             
             resetGame();
             gameActive = true;
-            const button = document.querySelector('.game-container button');
-            button.textContent = 'Идет игра...';
+            const buttons = document.querySelectorAll('.game-container button');
+            buttons[0].textContent = 'Идет игра...';
             
             gameInterval = setInterval(createGameFlower, 1000);
             
@@ -309,37 +429,75 @@
                 timeLeft--;
                 document.getElementById('time').textContent = timeLeft;
                 
+                if (Math.random() < 0.1) {
+                    triggerSpecialEvent();
+                }
+                
                 if (timeLeft <= 0) {
                     endGame();
                     clearInterval(timer);
                 }
             }, 1000);
-
-            // Создаем редкие цветы
-            setInterval(() => {
-                if (gameActive && Math.random() < 0.2) {
-                    createRareFlower();
-                }
-            }, 5000);
         }
 
+        // Функция сброса игры
         function resetGame() {
             score = 0;
             combo = 1;
             timeLeft = 30;
+            flowerSpeed = 2000;
+            gameStats = {
+                flowers: { '🌸': 0, '🌷': 0, '🌹': 0, '🌺': 0, '✨': 0, '🌿': 0 },
+                maxCombo: 1,
+                totalClicks: 0,
+                successfulClicks: 0,
+                specialEvents: 0
+            };
             updateUI();
             document.getElementById('gameArea').innerHTML = '';
         }
 
-        function createGameFlower() {
+        function triggerSpecialEvent() {
+            const events = [
+                { name: 'flowerRain', duration: 3000 },
+                { name: 'freeze', duration: 5000 }
+            ];
+            const event = events[Math.floor(Math.random() * events.length)];
+            
+            if (event.name === 'flowerRain') {
+                for (let i = 0; i < 10; i++) {
+                    createGameFlower(true);
+                }
+            } else if (event.name === 'freeze') {
+                flowerSpeed = flowerSpeed * 2;
+                setTimeout(() => {
+                    flowerSpeed = flowerSpeed / 2;
+                }, event.duration);
+            }
+            
+            gameStats.specialEvents++;
+        }
+
+        function createGameFlower(isRainEvent = false) {
             if (!gameActive) return;
             
             const gameArea = document.getElementById('gameArea');
             const flower = document.createElement('div');
             flower.className = 'game-flower';
             
-            const flowers = ['🌸', '🌷', '🌹', '🌺'];
-            flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+            // 15% шанс появления сорняка
+            const isWeed = Math.random() < 0.15;
+            const flowers = isWeed ? ['🌿', '☠️'] : ['🌸', '🌷', '🌹', '🌺'];
+            const selectedFlower = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.textContent = selectedFlower;
+            
+            if (isWeed) {
+                flower.classList.add('weed');
+            }
+            
+            if (isRainEvent) {
+                flower.classList.add('flower-rain');
+            }
             
             const left = Math.random() * (gameArea.offsetWidth - 30);
             const top = Math.random() * (gameArea.offsetHeight - 30);
@@ -350,11 +508,24 @@
             flower.addEventListener('click', () => {
                 if (!gameActive) return;
                 
-                score += Math.ceil(combo);
-                combo = Math.min(5, combo + 0.5);
+                gameStats.totalClicks++;
+                
+                if (isWeed) {
+                    score = Math.max(0, score - 5);
+                    timeLeft = Math.max(1, timeLeft - 2);
+                    combo = 1;
+                    gameStats.flowers[selectedFlower] = (gameStats.flowers[selectedFlower] || 0) + 1;
+                } else {
+                    score += Math.ceil(combo);
+                    combo = Math.min(5, combo + 0.5);
+                    gameStats.successfulClicks++;
+                    gameStats.flowers[selectedFlower] = (gameStats.flowers[selectedFlower] || 0) + 1;
+                }
+                
+                gameStats.maxCombo = Math.max(gameStats.maxCombo, combo);
                 updateUI();
                 
-                showComboText(Math.ceil(combo), left, top);
+                showComboText(isWeed ? '-5' : `+${Math.ceil(combo)}`, left, top);
                 
                 flower.style.transform = 'scale(1.5)';
                 flower.style.opacity = '0';
@@ -363,60 +534,101 @@
 
             gameArea.appendChild(flower);
             
-            setTimeout(() => {
-                if (flower.parentNode === gameArea) {
-                    flower.style.opacity = '0';
-                    setTimeout(() => flower.remove(), 200);
-                    combo = 1;
-                    updateUI();
-                }
-            }, 2000);
+            if (!isRainEvent) {
+                setTimeout(() => {
+                    if (flower.parentNode === gameArea) {
+                        flower.style.opacity = '0';
+                        setTimeout(() => flower.remove(), 200);
+                        if (!isWeed) {
+                            combo = 1;
+                            updateUI();
+                        }
+                    }
+                }, flowerSpeed);
+            }
         }
 
-        function createRareFlower() {
-            const gameArea = document.getElementById('gameArea');
-            const flower = document.createElement('div');
-            flower.className = 'game-flower rare';
-            flower.textContent = '✨';
-            
-            const left = Math.random() * (gameArea.offsetWidth - 30);
-            const top = Math.random() * (gameArea.offsetHeight - 30);
-            
-            flower.style.left = left + 'px';
-            flower.style.top = top + 'px';
-            
-            flower.addEventListener('click', () => {
-                if (!gameActive) return;
-                
-                score += 10;
-                timeLeft = Math.min(30, timeLeft + 5);
-                updateUI();
-                
-                showComboText('✨+5с', left, top);
-                
-                flower.style.transform = 'scale(2)';
-                flower.style.opacity = '0';
-                setTimeout(() => flower.remove(), 200);
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameInterval);
+            const button = document.querySelector('.game-container button');
+            button.textContent = 'Начать игру';
+
+            const accuracy = Math.round((gameStats.successfulClicks / gameStats.totalClicks) * 100) || 0;
+            let message = '';
+            let bouquet = '';
+
+            if (score >= 50) {
+                message = "Ты настоящий садовник! 🌟";
+                bouquet = "💐🌸🌺";
+            } else if (score >= 30) {
+                message = "Отличная работа! ✨";
+                bouquet = "💐🌸";
+            } else if (score >= 10) {
+                message = "Хороший старт! 🌱";
+                bouquet = "🌸";
+            } else {
+                message = "Попробуй еще раз, цветы ждут! 🌱";
+                bouquet = "🌱";
+            }
+
+            const name = prompt("Введите ваше имя для таблицы рекордов:");
+            if (name) {
+                saveScore(name, score);
+            }
+
+            showStats(message, bouquet, accuracy);
+        }
+
+        function showStats(message, bouquet, accuracy) {
+            const statsGrid = document.getElementById('stats-grid');
+            statsGrid.innerHTML = `
+                <div class="stats-item">Очки: ${score}</div>
+                <div class="stats-item">Лучшее комбо: x${gameStats.maxCombo.toFixed(1)}</div>
+                <div class="stats-item">Точность: ${accuracy}%</div>
+                <div class="stats-item">Бонусные события: ${gameStats.specialEvents}</div>
+            `;
+
+            Object.entries(gameStats.flowers).forEach(([flower, count]) => {
+                if (count > 0) {
+                    statsGrid.innerHTML += `
+                        <div class="stats-item">${flower}: ${count}</div>
+                    `;
+                }
             });
 
-            gameArea.appendChild(flower);
-            
-            setTimeout(() => {
-                if (flower.parentNode === gameArea) {
-                    flower.style.opacity = '0';
-                    setTimeout(() => flower.remove(), 200);
-                }
-            }, 3000);
+            document.getElementById('final-bouquet').textContent = bouquet;
+            document.getElementById('statsModal').style.display = 'flex';
         }
 
-        function showComboText(text, x, y) {
-            const comboText = document.createElement('div');
-            comboText.className = 'combo-text';
-            comboText.textContent = `+${text}`;
-            comboText.style.left = x + 'px';
-            comboText.style.top = y + 'px';
-            document.getElementById('gameArea').appendChild(comboText);
-            setTimeout(() => comboText.remove(), 1000);
+        function saveScore(name, score) {
+            const scores = JSON.parse(localStorage.getItem('scores') || '[]');
+            scores.push({ name, score, date: new Date().toLocaleDateString() });
+            scores.sort((a, b) => b.score - a.score);
+            localStorage.setItem('scores', JSON.stringify(scores.slice(0, 10)));
+        }
+
+        function showLeaderboard() {
+            const scores = JSON.parse(localStorage.getItem('scores') || '[]');
+            const list = document.getElementById('leaderboard-list');
+            list.innerHTML = scores.map((score, index) => `
+                <div class="leaderboard-item">
+                    <span>${index + 1}. ${score.name}</span>
+                    <span>${score.score} очков</span>
+                </div>
+            `).join('');
+            document.getElementById('leaderboardModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Закрытие модальных окон при клике вне их области
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
         }
 
         function updateUI() {
@@ -425,15 +637,7 @@
             document.getElementById('time').textContent = timeLeft;
         }
 
-        function endGame() {
-            gameActive = false;
-            clearInterval(gameInterval);
-            const button = document.querySelector('.game-container button');
-            button.textContent = 'Начать игру';
-            alert(`Игра окончена!\nВы собрали ${score} очков!`);
-        }
-
-        // Показываем первое сообщение и список идей
+        // Инициализация страницы
         showNewMessage();
         updateSelfCareList();
     </script>
