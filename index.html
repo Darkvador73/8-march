@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 марта!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ffe6f0, #ffd1dc, #ffb6c1);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 1rem 0;
+            line-height: 1.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .flowers {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .flower {
+            position: absolute;
+            animation: fall linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        button {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #ff1493;
+        }
+
+        .self-care {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .self-care h2 {
+            color: #ff69b4;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .self-care ul {
+            text-align: left;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .self-care li {
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 8px;
+            background: rgba(255, 182, 193, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .self-care li:hover {
+            transform: translateX(10px);
+            background: rgba(255, 182, 193, 0.2);
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
+        }
+
+        .header-signature {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1rem;
+            color: #666;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            animation: fadeIn 1s ease;
+        }
+
+        .header-signature a {
+            color: #ff69b4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .header-signature a:hover {
+            color: #ff1493;
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-signature">
+        С теплом от Андрея, тг канал "<a href="https://t.me/gptbez5" target="_blank">GPT без пяти</a>"
+    </div>
+    <div class="flowers" id="flowers"></div>
+    <div class="container">
+        <h1>С 8 марта! 🌸</h1>
+        <div class="message" id="message"></div>
+        <button onclick="showNewMessage()">Новое пожелание</button>
+        <div class="self-care">
+            <h2>Порадовать себя в этот день 🎀</h2>
+            <ul id="self-care-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "Пусть каждый день будет наполнен радостью и любовью! 💖",
+            "Желаю бесконечного счастья и весеннего настроения! 🌺",
+            "Ты прекрасна, как первые весенние цветы! 🌷",
+            "Пусть сбываются все твои мечты! ✨",
+            "Будь всегда такой же очаровательной и неповторимой! 🎀",
+            "Пусть жизнь будет полна приятных сюрпризов! 🎁",
+            "Ты заслуживаешь всего самого лучшего! 👑",
+            "Пусть каждый день дарит новые поводы для улыбки! 😊",
+            "Будь счастлива и любима каждый день! ❤️",
+            "Пусть весна всегда живёт в твоём сердце! 🌸"
+        ];
+
+        const selfCareIdeas = [
+            "🛁 Принять ароматную ванну с лепестками роз",
+            "🍫 Побаловать себя любимым десертом",
+            "👗 Надеть самое красивое платье",
+            "💅 Сделать маникюр в весенних тонах",
+            "📚 Почитать любимую книгу с чашечкой чая",
+            "🌺 Купить себе букет любимых цветов",
+            "🎭 Посетить театр или выставку",
+            "👯‍♀️ Встретиться с подругами",
+            "🎨 Заняться творчеством",
+            "🧘‍♀️ Помедитировать в приятной обстановке",
+            "💆‍♀️ Сделать расслабляющий массаж",
+            "🎵 Потанцевать под любимую музыку",
+            "🌿 Погулять в парке или саду",
+            "📱 Позвонить близкой подруге",
+            "🎁 Купить себе давно желанный подарок",
+            "☕️ Позавтракать в уютном кафе",
+            "🌙 Устроить вечер ухода за собой",
+            "🎬 Посмотреть любимый фильм с вкусняшками"
+        ];
+
+        function showNewMessage() {
+            const messageElement = document.getElementById('message');
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            messageElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                messageElement.textContent = messages[randomIndex];
+                messageElement.style.opacity = 1;
+            }, 300);
+
+            updateSelfCareList();
+        }
+
+        function updateSelfCareList() {
+            const listElement = document.getElementById('self-care-list');
+            listElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                listElement.innerHTML = '';
+                const shuffled = [...selfCareIdeas].sort(() => 0.5 - Math.random());
+                const selected = shuffled.slice(0, 8);
+                
+                selected.forEach(idea => {
+                    const li = document.createElement('li');
+                    li.textContent = idea;
+                    listElement.appendChild(li);
+                });
+                listElement.style.opacity = 1;
+            }, 300);
+        }
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            const flowers = ['🌸', '🌷'];
+            flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.className = 'flower';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            flower.style.animationDuration = (Math.random() * 10 + 5) + 's';
+            document.getElementById('flowers').appendChild(flower);
+
+            flower.addEventListener('animationend', () => {
+                flower.remove();
+            });
+        }
+
+        showNewMessage();
+        updateSelfCareList();
+        setInterval(createFlower, 1000);
+    </script>
+</body>
+</html> 
